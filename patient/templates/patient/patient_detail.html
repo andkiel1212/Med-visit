@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/patient-detail.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+    <div class=" row mx-2 mx-auto">
+
+        <div class="row align-items-center mx-3 " style="border-radius: 15px; margin-top: 10px; margin-bottom: 10px;">
+            <h1 style="font-size: 2em;" class="col ">
+                {{ patient.name_patient }}
+                {{ patient.surname_patient }}
+            </h1>
+            <h1 class="col text-center justify-content-center ">
+                Tel. : +48 {{ patient.phone_number }}
+            </h1>
+            <h1 class="col text-center">
+                E-mail: {{ patient.email }}
+            </h1>
+        </div>
+        <hr>
+
+        {% if visits %}
+
+        <div style="overflow: auto; max-height: 70vh;">
+            {% for visit in visits %}
+
+            <div class=" row align-items-center tb border"
+                style=" margin-bottom: 20px; min-height: 180px; -webkit-box-shadow: 7px 8px 17px -11px rgba(66, 68, 90, 1); -moz-box-shadow: 7px 8px 17px -11px rgba(66, 68, 90, 1);box-shadow: 7px 8px 17px -11px rgba(66, 68, 90, 1)">
+                <span class="col-2 align-self-start mt-2">
+                    <div
+                        style="width: 90px; height: 90px; background-color: #8de0e0; border-radius: 15px; text-align: center; color: black;">
+                        <p style=" font-size: 3em; ">{{visit.date_visit|date:'d'}}</p>
+                        <p>{{visit.date_visit|date:'E'}}</p>
+                        <p class=" mt-1">{{visit.date_visit|date:'o'}}</p>
+                    </div>
+                </span class=" col">
+                <span class="col">
+                    <h2>Wizyta:</h2>
+                    <p>{{visit.description}}</p>
+                </span>
+                <span class="col">
+                    <h2>Wskazania:</h2>
+                    <p>{{visit.recommendation_visit}}</p>
+                </span>
+
+            </div>
+            <button><a href="{{ visit.get_absolute_url}}">OPIS</a></button>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <h1 class="mb-5" style="font-size: 1.5em; text-align: center; color: red;">BRAK WIZYT</h1>
+        {% endif %}
+        <div>
+            <a href="{% url 'patient-list' %}"><button class="btn btn-primary float-end">Wstecz
+                </button></a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

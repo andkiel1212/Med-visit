@@ -1,0 +1,22 @@
+{% extends "registration/base-login.html" %}
+
+
+{% block login %}
+<div class="container-fluid text-center " data-bitwarden-watching="1" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(295.7deg, #66203D 14.76%, #015B73 83.18%);">
+    <div class=" form-signing  flex-column min-vh-100 d-flex justify-content-center align-items-center ">
+        <h1 class=" pb-4" style="color: white;">Logowanie</h1>
+        <div class=" text-light p-4 col-11  col-sm-9  col-md-6 col-xl-4" style="border-radius: 30px; background-color: #223142; border: 1px solid grey ;">
+            <div class=" d-flex justify-content-center pb-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" >
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+            </div>
+            <div class="fw-bold form-group ">
+                <h2 class="mt-2">Zostałeś wylogowany</h2>
+                <p class="form-floating mt-4 mb-2" style="font-size: 0.8em;" >Możesz ponownie się <a style=" color: aquamarine;" href="{% url "login" %}"> ZALOGOWAĆ</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

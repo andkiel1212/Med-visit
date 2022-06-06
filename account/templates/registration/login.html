@@ -1,0 +1,45 @@
+{% extends "registration/base-login.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block login %}
+<div class="container-fluid "  style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(295.7deg, #66203D 14.76%, #015B73 83.18%);">
+    <div class=" form-signing flex-column min-vh-100 d-flex justify-content-center align-items-center ">
+        <h1 class="text-center pb-4" style="color: white;">Logowanie</h1>
+        <div class=" text-light p-4 col-11  col-sm-9 col-xl-4 col-md-6" style="border-radius: 30px; background-color: #223142; border: 1px solid grey ;">
+                <div class=" d-flex justify-content-center pb-3 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" >
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                    </svg>
+                </div>
+                <h5 class="text-center mb-4">Zaloguj się, aby rozpocząć sesję.</h5>
+                <div class="fw-bold form-group " >
+                {% if form.error %}
+                    <p>
+                        Nazwa użytkownika lub hasło są nieprawidłowe. Próbuj ponownie. 
+                    </p>
+                {% endif %}
+                   <form action="{% url 'login' %}"  method="post" class="col-xl-10 col-sm-9 col-md-9 col-9 " style="margin: auto;" >
+                        {% csrf_token %}
+                        <div class="form-lable-group mlr-2 "> 
+                            {% render_field form.username type="text" placeholder="LOGIN" class="form-control" %}
+                        </div> 
+                        <div class="form-lable-group m-2"></div>
+                            {% render_field form.password type="password" placeholder="HASŁO" class="form-control" %}
+                            </label>
+                        </div> 
+                        
+                        <p class="text-center mt-3" style="font-size: 0.8em;">Jeżeli nie masz konta: <a style="color: aquamarine;" href="#">Zarejestruj się.</a></p>
+                        
+                        <div class="d-flex justify-content-center ">
+                            <input class = " w-50 btn btn-primary  btn col- col-sm-4 mt-2" type="submit" value=" ZALOGUJ" style="border-radius: 15px; background-color: #015B73;">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}"/>
+                   </form>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

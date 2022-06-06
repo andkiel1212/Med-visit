@@ -1,0 +1,21 @@
+<table class=" table  table-sm  mt-3 border text-start ">
+    <div>
+        {% for patient in vectors %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ patient.name_patient }}</td>
+            <td>{{ patient.surname_patient }}</td>
+            <td>{{ patient.phone_number }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.create_date|date:"d E Y" }}</td>
+            <td>
+                <div class="btn-group-horizontal " role="group">
+                    <button type="button" class="btn btn-primary">
+                        <a style="color: white; text-decoration: none;" href="{{ patient.get_absolute_url }}">POKAŻ</a>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </div>
+</table>

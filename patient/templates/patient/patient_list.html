@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/patient-list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="mx-3">
+    <a href="{% url 'create-patient' %}" style="float: right; display:block;"><button class="btn btn-success mb-2">NOWY
+            PACJENT</button></a>
+    <div class=" w-100">
+        <h3 class="mb-2">Search</h3>
+        <input hx-post="{% url 'search-patients' %}" class="form-control" type="text" name="search"
+            placeholder=" WYSZUKAJ: Imię Nazwisko lub E-mail lub Numer telefonu." hx-target="#search_patient"
+            hx-trigger="load, keyup changed delay:500ms" hx-swap="innerHTML">
+    </div>
+    
+    <div style=" height: 70vh; overflow: auto;">
+        <table class=" table  table-sm  mt-3 border">
+            <tr class=" border table-primary">
+                <th class="col">#</th>
+                <th class="col">Imię</th>
+                <th class="col">Nazwisko</th>
+                <th class="col">Telefon</th>
+                <th class="col">Mail</th>
+                <th class="col">Data</th>
+                <th class="col">Modyfikacja</th>
+            </tr>
+            
+        </table>
+       <div id="search_patient" class="table  table-sm  mt-3 border"></div>
+    </div>
+    <div style="background-color: cadetblue; margin-top: 40px;">
+        <h1>FOOTER</h1>
+    </div>
+</div>
+
+{% endblock %}

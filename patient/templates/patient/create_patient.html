@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="w-100">
+    <div class="mx-auto mt-4 w-25">
+        <h1 class="m-5">Nowa karta</h1>
+        <form class="mx-auto" action='.' method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <a href="{% url 'create-patient' %}"><button type="submit" class=" mt-4">Utwórz karte</button></a>
+        </form>
+        <a href="{% url 'patient-list' %}" ><button class=" mt-4">Anuluj</button></a>
+    </div>
+</div>
+{% endblock %}
